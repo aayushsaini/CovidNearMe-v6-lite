@@ -1,13 +1,20 @@
-# COVIDNEARME [![Build Status](http://img.shields.io/travis/shama/gaze.svg)](https://travis-ci.org/shama/gaze) [![Build status](https://ci.appveyor.com/api/projects/status/vtx65w9eg511tgo4)](https://ci.appveyor.com/project/shama/gaze)
+# COVIDNEARME.IN [![Build status](https://ci.appveyor.com/api/projects/status/vtx65w9eg511tgo4)](https://ci.appveyor.com/project/shama/gaze) 
 
-A globbing `fs.watch` wrapper built from the best parts of other fine watch libs.  
-Compatible with Node.js >= 4.x, Windows, macOS, and Linux.
+This is the lite version of web app CovidNearMe `Ver-6` <br>
+For the live project, click this link 👉 https://www.covidnearme.in 
+
+## [![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com) 
+
 
 ![COVIDNEARME](http://images.ctfassets.net/jm7q4xlnyfax/3tIysTwifPYvZArKkcf6fz/2639f0ec0a4b591de06985962d01657e/p1-min.png)
 
-[![NPM](https://nodei.co/npm/gaze.png?downloads=true)](https://nodei.co/npm/gaze/)
+## Note
+In this lite verison(`v6`) the REACT Front-end is removed and have been replaced with standard HTML5, CSS3 & JS(ES6).
+A new bug-fix version will released and will replace this after all the implementation and testing is done.
 
+## Future Release
+The REACT based front-end will be reinstated along with added optimization
 
 ## License
-Copyright (c) 2018 Kyle Robinson Young  
-Licensed under the MIT license.
+Copyright (c) 2020 AAYUSH SAINI<br>
+Licensed under the MOZILLA v2 license.
