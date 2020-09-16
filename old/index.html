@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Covid near me</title>
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <meta name="og:title" property="og:title" content="Covid-19 tracker. Find corona virus near you">
+    <meta name="description" content="Covid-19 tracker. Find corona virus near you">
+<!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <script src="main.js?ver=3.09"></script>
+    <link rel="icon" href="css/icon.png">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163252735-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-163252735-2');
+    </script>
+
+
+</head>
+<body onload="getLocation()" class="grey lighten-5" style="overflow-x: hidden;">
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="analytics.html">Analytics</a></li>
+    <li><a href="about.html">About us</a></li>
+    <li><a href="#">Contact us</a></li>
+  </ul>
+  <div class="navbar-fixed">
+      <nav>
+      <div class="nav-wrapper white z-depth-3" style="z-index: 1;">
+        <a href="https://www.covidnearme.in"><img src="logo2.png" alt="" class="brand-logo hide-on-med-and-down show-on-large"
+            width="16%" style="position: absolute; top: 50%;-ms-transform: translateY(-50%); transform: translateY(-50%);"></a>
+        <a href="https://www.covidnearme.in"><img class="left brand-logo hide-on-large-only hide-on-small-only show-on-med"
+            src="logo2.png" alt="" width="26%" style="position: absolute; top: 50%;-ms-transform: translateY(-50%); transform: translateY(-50%);"></a>
+        <a href="https://www.covidnearme.in"><img src="logo2.png" alt="" class="left brand-logo hide-on-med-and-up show-on-small"
+            width="50%" style="position: absolute; top: 50%;-ms-transform: translateY(-50%); transform: translateY(-50%);"></a>
+        <a href="#" data-target="mobile-demo" class="right black-text sidenav-trigger"><i
+            class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down teal lighten-2">
+          <li><a href="analytics.html">Analytics</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="#">Contact us</a></li>
+        </ul>
+
+
+      </div>
+    </nav>
+      
+    </div>
+      
+   
+        <div id="error_location" style="display: none;">
+        <div class="row container" style="margin-top: 5%;">
+            <div class="col s12 m12 l12">
+                <center>
+                    <h4><i class="material-icons teal-text">pin_drop</i>LOCATION or GPS Required</h4>
+                    <p class="grey-text">Error:<span id="loc_error_message"></span></p>
+                </center>
+                <br>
+                <center>
+                     <p>Dear user, this website uses your location to find the number of corona cases near you</p>
+                    <p><b>We do not save your data</b></p>
+                    <p><span class="red-text">If your location settings are <b>off</b> then
+                            please
+                            <b>turn on</b> the settings and press the <b>button</b> below</span></b></p>
+                    <button onclick="window.location.reload();"
+                        class="modal-close waves-effect waves-green btn-flat teal lighten-2 white-text z-depth-3">Refresh
+                        Page</button>
+
+                </center>
+            </div>
+        </div>
+    </div>
+
+    <div id="wrapper" style="overflow-x: hidden; display: block;">
+        <div id='map' style='width: 100vw; height: 60vh;'>
+        </div>
+        <div id="menu" style="color:white;z-index: 3;position: absolute; top: 10% ;background: rgba(177, 177, 177,0.8);padding: 10px; font-family: 'Open Sans', sans-serif;">
+            <div>Zoom in/out to explore cases</div>       
+        </div>
+
+        <div class="row" style="margin-top: 1%; overflow-x: hidden">
+            <div class="col s12 m4 l4">
+                <div class="card white z-depth-3" style="border-radius: 10px;">
+                    <div class="card-content teal lighten-2 white-text" style="border-radius: 10px 10px 0px 0px;">
+                        <span class="card-title">Place: <span class="user_city">loading...</span></span>
+                        <p>According to the reported data, <span class="user_city"></span> has total <b><span
+                                id="place_cases"></span></b> cases of Corona Virus with a total recovery of <b><span
+                                id="place_recovered"></span></b> and a total death toll of <b><span id="place_death"></span></b>
+                        </p>
+                    </div>
+                    <div class="card-action" id="city_chart" style="border-radius: 10px;">
+                        <canvas id="myChart1" width="300" height="280"></canvas><br>                      
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col s12 m4 l4">
+                <div class="card white z-depth-3" style="border-radius: 10px;">
+                    <div class="card-content teal lighten-2 white-text" style="border-radius: 10px 10px 0px 0px;">
+                        <span class="card-title">Region: <span class="user_region">loading...</span></span>
+                        <p>According to the reported data, <span class="user_region"></span> has total <b><span
+                                id="state_cases"  style="color:#ffffff"></span></b> cases of Corona Virus with a total recovery of <b><span
+                                id="state_recovered"></span></b> and a total death toll of <b><span id="state_death"></span></b>
+                        </p>
+                    </div>
+                    <div class="card-action" style="border-radius: 10px;">
+                        <canvas id="myChart2" width="300" height="280"></canvas><br>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col s12 m4 l4">
+                <div class="card white z-depth-3" style="border-radius: 10px;">
+                    <div class="card-content teal lighten-2 white-text" style="border-radius: 10px 10px 0px 0px;">
+                        <span class="card-title">Country: <span class="user_country">loading...</span></span>
+                        <p>According to the recorded data, <span class="user_country"></span> has total <b><span
+                                id="country_cases"></span></b> cases of Corona Virus with a total recovery of <b><span
+                                id="country_recovered"></span></b> and a total death toll of <b><span
+                                id="country_death"></span></b></p>
+                    </div>
+                    <div class="card-action" style="border-radius: 10px;">
+                        <canvas id="myChart3" width="300" height="280"></canvas><br>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col s12 hide-on-med-and-up show-on-small">
+                <center><a href="analytics.html" class="waves-effect waves-light btn-large z-depth-3" style="border-radius: 5px;"><i class="material-icons right">timeline</i>go to analytics</a></center>
+            </div>
+        </div>
+
+        <footer class="page-footer white">
+            <div class="footer-copyright white grey-text">
+                <div class="container">
+                    <center>An initiative to find corona virus cases near you</center>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <script type="text/javascript" src="india_city_coords2.json"></script>
+
+
+    <script src="js/materialize.min.js"></script>
+</body>
+
+</html>

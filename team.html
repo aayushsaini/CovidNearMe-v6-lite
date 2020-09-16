@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>COVID-19 Tracker</title>
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <script src="main.js"></script>
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#212121">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#212121">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#212121">
+    <link rel="icon" href="css/icon.png">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163252735-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-163252735-2');
+    </script>
+
+</head>
+
+<body class="grey darken-4" style="overflow-x: hidden;">
+    <ul class="sidenav grey darken-4" id="mobile-demo">
+        <li><a href="analytics.html" class="teal-text">Analytics</a></li>
+        <li><a href="about.html" class="teal-text">About</a></li>
+        <li><a href="team.html" class="teal-text">Our Team</a></li>
+    </ul>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper grey darken-4 z-depth-3" style="z-index: 1;">
+                <a href="index.html"><img src="logo_1.png" alt=""
+                        class="brand-logo hide-on-med-and-down show-on-large" width="16%"
+                        style="position: absolute; top: 50%;-ms-transform: translateY(-50%); transform: translateY(-50%);"></a>
+                <a href="index.html"><img
+                        class="left brand-logo hide-on-large-only hide-on-small-only show-on-med" src="logo_1.png" alt=""
+                        width="26%"
+                        style="position: absolute; top: 50%;-ms-transform: translateY(-50%); transform: translateY(-50%);"></a>
+                <a href="index.html"><img src="logo_1.png" alt=""
+                        class="left brand-logo hide-on-med-and-up show-on-small" width="50%"
+                        style="position: absolute; top: 50%;-ms-transform: translateY(-50%); transform: translateY(-50%);"></a>
+                <a href="#" data-target="mobile-demo" class="right teal-text sidenav-trigger"><i
+                        class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down teal lighten-2">
+                    <li><a href="analytics.html">Analytics</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="team.html" class="teal-text">Our Team</a></li>
+                </ul>
+
+
+            </div>
+        </nav>
+    </div>
+
+    <div class="row container" style="width: 90%;">
+        <div class="col s12 m12 l12"><br class="hide-on-small-only">
+            <center>
+                <h4 style="color: rgb(221, 221, 221);">Meet our team</h4>
+            </center><br>
+        </div>
+        <div class="col s12 m6">
+            <center><a href="https://www.linkedin.com/in/aayush-saini/"><img src="team/aayush.jpeg"
+                        class="circle responsive-img z-depth-4" width="45%" style="border: 2px solid rgb(41, 236, 155)"
+                        alt=""></a></center>
+            <center><span><a style="color: rgb(102, 241, 183);" href="https://www.linkedin.com/in/aayush-saini/">AAYUSH
+                        SAINI</a></span>
+                <br><span style="color: rgb(201, 201, 201); font-size: 0.7em;"><i>(Project Founder, DITU)</i></span>
+            </center><br>
+        </div>
+        <div class="col s12 m6">
+            <center><a href="https://www.linkedin.com/in/sanat-srivastava/"><img src="team/sanat.jpeg"
+                    class="circle responsive-img z-depth-4" width="45%" style="border: 2px solid rgb(236, 135, 41)"
+                    alt=""></a> </center>
+            <center><span></span><a
+                    href="https://www.linkedin.com/in/sanat-srivastava/" style="color: rgb(236, 135, 41);"> SANAT SRIVASTAVA</a></span>
+                <br><span style="color: rgb(201, 201, 201); font-size: 0.7em;"><i>(Project Manager, DITU)</i></span>
+            </center><br>
+        </div>
+        <div class="col s6 m4">
+            <center><img src="team/rohan.jpeg" class="circle responsive-img z-depth-4" width="60%"
+                    style="border: 2px solid rgb(4, 16, 49)" alt=""></center>
+            <center><span style="color: rgb(40, 97, 218);">ROHAN SHUKLA</span>
+                <br><span style="color: rgb(201, 201, 201); font-size: 0.7em;"><i>(Visual data team, DITU)</i></span>
+            </center>
+        </div>
+        <div class="col s6 m4">
+            <center><img src="team/prashant.jpeg" class="circle responsive-img z-depth-4" width="60%"
+                    style="border: 2px solid rgb(93, 2, 116)" alt=""></center>
+            <center><span style="color: rgb(174, 41, 236);">PRASHANT K.</span>
+                <br><span style="color: rgb(201, 201, 201); font-size: 0.7em;"><i>(Visual data team, DITU)</i></span>
+            </center><br>
+        </div>
+
+        <div class="col s6 m4">
+            <center><img src="team/vaibhav.jpeg" class="circle responsive-img z-depth-4" width="60%"
+                    style="border: 2px solid rgb(230, 61, 83)" alt=""></center>
+            <center><span style="color: rgb(231, 109, 146);">VAIBHAV M.</span>
+                <br><span style="color: rgb(201, 201, 201); font-size: 0.7em;"><i>(Visual data team, DITU)</i></span>
+            </center>
+        </div>
+        <div class="col s6 hide-on-med-and-up show-on-small">
+            <center><img src="team/ansh.jpeg" class="circle responsive-img z-depth-4" width="60%"
+                    style="border: 2px solid rgb(17, 76, 165)" alt=""></center>
+            <center><span style="color: rgb(154, 130, 223);">ANSH BAJAJ</span>
+                <br><span style="color: rgb(201, 201, 201); font-size: 0.7em;"><i>(Visual data team, DITU)</i></span>
+            </center>
+        </div>
+        <div class="col s12 hide-on-med-and-up show-on-small">
+            <center><img src="team/aman.jpeg" class="circle responsive-img z-depth-4" width="30%"
+                    style="border: 2px solid rgb(236, 41, 99)" alt=""></center>
+            <center><span style="color: rgb(236, 110, 148);">AMANDEEP</span>
+                <br><span style="color: rgb(201, 201, 201); font-size: 0.7em;"><i>(Visual data team, DITU)</i></span>
+            </center>
+        </div>
+        <div class="col s6 m6 l6 show-on-med-and-up hide-on-small-only">
+            <center><img src="team/ansh.jpeg" class="circle responsive-img z-depth-4" width="30%"
+                    style="border: 2px solid rgb(17, 76, 165)" alt=""></center>
+            <center><span style="color: rgb(154, 130, 223);">ANSH BAJAJ</span>
+                <br><span style="color: rgb(201, 201, 201); font-size: 0.7em;"><i>(Visual data team, DITU)</i></span>
+            </center>
+        </div>
+        <div class="col s12 m6 l6 show-on-med-and-up hide-on-small-only">
+            <center><img src="team/aman.jpeg" class="circle responsive-img z-depth-4" width="30%"
+                    style="border: 2px solid rgb(236, 41, 99)" alt=""></center>
+            <center><span style="color: rgb(236, 110, 148);">AMANDEEP</span>
+                <br><span style="color: rgb(201, 201, 201); font-size: 0.7em;"><i>(Map data team)</i></span>
+            </center>
+        </div>
+    </div>
+    </div>
+    <div class="row show-on-small">
+        <div class="col s12">
+            <center><a href="https://paytm.com/helpinghand/pm-cares-fund"
+                    class="waves-effect waves-light btn z-depth-3 pink accent-3"
+                    style="border-radius: 5px;width: 70%;"><i class="material-icons right"
+                        style="margin-right: 2%;">local_hospital</i>Donate to pm cares fund</a></center>
+        </div>
+    </div>
+
+    <footer class="page-footer grey darken-4">
+        <div class="footer-copyright grey darken-3 grey-text">
+            <div class="container">
+                <center>An initiative to find corona virus near you</center>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/materialize.min.js"></script>
+</body>
+
+</html>
